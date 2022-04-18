@@ -15,9 +15,12 @@ import ScrollSpyMenu from 'common/components/ScrollSpyMenu';
 
 import LogoImage from 'common/assets/image/saasModern/logo-white.png';
 import LogoImageAlt from 'common/assets/image/saasModern/logo.png';
+import { openModal } from "@redq/reuse-modal";
+import EmailModal from "containers/App/emailModal";
 
 const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
   const { state, dispatch } = useContext(DrawerContext);
+ 
 
   // Toggle drawer
   const toggleHandler = () => {
@@ -26,6 +29,27 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
     });
   };
 
+  const openEmailModal = () => {
+    console.log('hello here is ')
+    openModal({
+      config: {
+        
+        //disableDragging: true,
+        width: "100%",
+        height: "100%",
+        animationFrom: { transform: "translateY(100px)" }, // react-spring <Spring from={}> props value
+        animationTo: { transform: "translateY(0)" }, //  react-spring <Spring to={}> props value
+        transition: {
+          mass: 1,
+          tension: 180,
+          friction: 26,
+        },
+      },
+      component: EmailModal,
+      componentProps: { data:{title:'GET STARTED' }},
+      
+    });
+  };
   return (
     <NavbarWrapper {...navbarStyle} className="saas_navbar">
       <Container>
@@ -52,7 +76,7 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
             />
             <Link href="#">
               <a className="navbar_button">
-                <Button {...button} title="GET STARTED" />
+                <Button {...button} onClick={() => openEmailModal()} title="GET STARTED" />
               </a>
             </Link>
             <Drawer
@@ -70,7 +94,7 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
               />
               <Link href="#">
                 <a className="navbar_drawer_button">
-                  <Button {...button} title="GET STARTED" />
+                  <Button {...button} onClick={() => openEmailModal()} title="GET STARTED" />
                 </a>
               </Link>
             </Drawer>

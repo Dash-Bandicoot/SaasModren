@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import Sticky from "react-stickynode";
 import { DrawerProvider } from "common/contexts/DrawerContext";
 import { saasModernTheme } from "common/theme/saasModern";
+import Loader from '../common/components/Loader';
 import ResetCSS from "common/assets/css/style";
 import {
   GlobalStyle,
@@ -47,8 +48,12 @@ const SaasModern = () => {
     //   setData(result.items)
   }, []);
   console.log(data);
-  // console.log(data)
-  return (
+
+  return !data ? (
+    <div style={{display:"flex",justifyContent:"center", alignItems:"center",height:"100vh"}}>
+      <Loader loaderColor={ "#30C56D"} width="100px" height="100px"/>
+    </div>
+  ) : (
     <ThemeProvider theme={saasModernTheme}>
       <Fragment>
         <Head>
@@ -86,17 +91,20 @@ const SaasModern = () => {
                 infoSectionContent={data["visitors"]}
                 howWorkContent={data["works"]}
               />
-               <FeatureSection featureContent={data['features']} />
-              <UpdateScreen updateContent={data['update']}/>
-              <PricingSection pricingContent={data['pricing']} />
-              <PartnerSection partnerContent={data['business']} />
+              <FeatureSection featureContent={data["features"]} />
+              <UpdateScreen updateContent={data["update"]} />
+              <PricingSection pricingContent={data["pricing"]} />
+              <PartnerSection partnerContent={data["business"]} />
               <TestimonialSection />
-              <FaqSection faqContent={data['questions']} />
+              <FaqSection faqContent={data["questions"]} />
               <TrialSection />
-              <Footer  securityContent={data['security']} aboutContent={data['about']}   privacyContent={data['privacy']} /> 
+              <Footer
+                securityContent={data["security"]}
+                aboutContent={data["about"]}
+                privacyContent={data["privacy"]}
+              />
             </>
           )}
-          
         </ContentWrapper>
       </Fragment>
     </ThemeProvider>

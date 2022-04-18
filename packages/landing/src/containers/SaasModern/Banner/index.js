@@ -30,7 +30,7 @@ const BannerSection = ({
   contactUsContent
   
 }) => {
-  
+  console.log(bannerContent.image[0].fields.file)
   const imageSrc=`https:${bannerContent.image[0].fields.file.url}`
   return (
     <BannerWrapper id="banner_section">

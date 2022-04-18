@@ -36,8 +36,12 @@
     ]
   },
   "dependencies": {
+    "@emailjs/browser": "^3.6.2",
     "contentful": "^9.1.18",
+    "emailjs": "^3.8.0",
+    "formik": "^2.2.9",
     "i": "^0.3.7",
-    "npm": "^8.5.5"
+    "npm": "^8.5.5",
+    "yup": "^0.32.11"
   }
 }
