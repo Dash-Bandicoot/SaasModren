@@ -26,7 +26,7 @@ const Logo = ({
     ) : (
       <>
         {logoSrc ? (
-          <Image src={logoSrc.src} alt={title} {...logoStyle} />
+          <Image src={logoSrc} alt={title} {...logoStyle} />
         ) : (
           <Text content={title} {...titleStyle} />
         )}

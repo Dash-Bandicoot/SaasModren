@@ -44,7 +44,10 @@ const EmailModal = ({ titleStyle, data }) => {
 
   const sendEmail = (values, { resetForm }) => {
     let { name, email, description, phone, price } = values;
+    let packages=choices.find(result=>result.value==price)
     
+    values.packageName=packages.key
+    values.packagePrice=packages.value
     if (
       name != "" &&
       email != "" &&
@@ -52,6 +55,7 @@ const EmailModal = ({ titleStyle, data }) => {
       phone != "" &&
       price != ""
     ) {
+
       emailjs
         .send(
           "service_916kgeh",

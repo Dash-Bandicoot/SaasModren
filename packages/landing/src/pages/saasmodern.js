@@ -39,10 +39,7 @@ const SaasModern = () => {
     };
     let client = getPage();
     let result = await client.getEntries(params);
-    console.log(result);
     const mappedData = generateData(result?.items);
-    console.log("MappedData");
-    console.log(mappedData);
     setData(mappedData);
 
     //   setData(result.items)

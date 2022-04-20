@@ -46,7 +46,7 @@ export const MENU_ITEMS = [
     label: 'FAQ',
     path: '#faq_section',
     offset: '0',
-  },
+  }
 ];
 
 export const PROCESS_ITEMS=[]
