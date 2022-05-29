@@ -58,14 +58,14 @@ const BannerSection = ({
              <Box {...buttonWrapper}>
               <Link href={contactUsContent?.link||''}>
                 <a>
-                  <Button {...fillButton} title="FREE TRIAL" />
+                  <Button {...fillButton} title={contactUsContent?.title} />
                 </a>
               </Link>
               <Link href={videoContent?.link||''}>
                 <a>
                   <Button
                     {...button}
-                    title="WATCH VIDEO"
+                    title={videoContent?.title}
                     icon={<Icon icon={ic_play_circle_filled} size={30} />}
                     iconPosition="left"
                   />

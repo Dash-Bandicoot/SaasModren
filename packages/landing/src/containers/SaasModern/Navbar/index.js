@@ -21,7 +21,7 @@ import EmailModal from "containers/App/emailModal";
 const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
   const { state, dispatch } = useContext(DrawerContext);
   const [data, setData] = useState();
-
+  const [menu,setMenu] =useState();
   const generateData = (items) => {
     return Object.assign(
       ...items.map((entity) => ({ [entity.fields.uid]: entity.fields }))
@@ -32,13 +32,19 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
     const params = {
       content_type: "saasModern",
     };
+    const params1={
+      content_type:'menuItems'
+    }
     let client = getPage();
     let result = await client.getEntries(params);
     const mappedData = generateData(result?.items);
     setData(mappedData);
-
-    //   setData(result.items)
+    
+    let result1=await client.getEntries(params1)
+    setMenu(result1?.items[0]?.fields?.menu||[])
   }, []);
+  console.log('menu')
+  console.log(menu)
   console.log("Logo Data");
   console.log(data?.logo?.image[0].fields.file.url);
   const imageSrc = `https:${data?.logo?.image[0].fields.file.url}`;
@@ -90,7 +96,7 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
           <Box {...menuWrapper}>
             <ScrollSpyMenu
               className="main_menu"
-              menuItems={MENU_ITEMS}
+              menuItems={menu||[]}
               offset={-70}
             />
             <Link href="#">
@@ -122,7 +128,7 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
             >
               <ScrollSpyMenu
                 className="mobile_menu"
-                menuItems={MENU_ITEMS}
+                menuItems={menu}
                 drawerClose={true}
                 offset={-100}
               />
