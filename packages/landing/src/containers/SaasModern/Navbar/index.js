@@ -113,7 +113,7 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
                 <Button
                   {...button}
                   onClick={() =>
-                    window.open("https://dev.d21e91suc2nlmq.amplifyapp.com")
+                    window.open("https://app.cntrol.io/")
                   }
                   title="SIGN UP"
                 />
@@ -146,7 +146,7 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
                   <Button
                     {...button}
                     onClick={() =>
-                      window.open("https://dev.d21e91suc2nlmq.amplifyapp.com")
+                      window.open("https://app.cntrol.io/")
                     }
                     title="SIGN UP"
                   />
